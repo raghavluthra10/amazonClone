@@ -11,9 +11,6 @@ const Home = () => {
             className='home__image'
             />
 
-            {/* product id, title, price, rating, image */}
-
-            {/* Product */}
             <div className='home__row'>
                 <Product 
                 id='12345'
@@ -52,7 +49,7 @@ const Home = () => {
 
                 <Product 
                 id='124345'
-                title='ZBRANDS // Microsoft Surface Book 2 Magnetic Privacy Anti-Glare Screen Protector | Anti-Spy Glass Screen Film (Surface Book 2-13.5")'
+                title='ZBRANDS // Microsoft Surface Book 2 Magnetic Privacy Anti-Glare Screen Protector '
                 price={11.96}
                 rating={5}
                 image='https://m.media-amazon.com/images/I/61ooRKLfoXL._AC_UL480_FMwebp_QL65_.jpg'

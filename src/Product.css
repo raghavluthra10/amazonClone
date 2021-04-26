@@ -37,3 +37,11 @@
     border: 1px solid;
     border-color: #a88734  #9c7e31  #846a29;
 }
+
+@media only screen and (max-width: 860px) {
+    .product  {
+        padding-right: 10px ;
+        width: 90%;
+        align-self: center;
+    }   
+}

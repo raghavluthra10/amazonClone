@@ -60,3 +60,9 @@
     margin-top: 10px;
     border-color: darkgray;
 }
+
+@media only screen and (max-width: 430px) {
+    .login__container{
+        width: 70vw;
+    }
+}

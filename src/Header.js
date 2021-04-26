@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import MenuIcon from '@material-ui/icons/Menu';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const Header = () => {
 
     const [{ basket, user }] = useStateValue();
-
-    console.log(basket)
+    
+    const [ toggle, setToggle ] = useState(true)
 
     const login = (e) => {
         if(user) {
@@ -24,13 +26,16 @@ const Header = () => {
                 <img src='https://m.media-amazon.com/images/G/39/gc/designs/livepreview/amazon_dkblue_noto_email_v2016_ae-main._CB441728605_.png' alt='' className='header__logo'  />
             </Link>
             
+            
+
+            
             <div className='header__search'>
                 <input className='header__searchInput' type='text' />
                 <SearchIcon className='header__searchIcon' />
             </div>
             
 
-            <div className='header__nav'>
+            <div className={toggle ? 'header__nav' : 'header__nav active'}>
 
                 <Link to={!user && '/login'} className='header__link' >
                     <div onClick={login} className='header__option'>
@@ -59,12 +64,17 @@ const Header = () => {
  
             <Link to='/checkout' className='header__link' >
                 <div className='header__optionBasket' >
-                    {/* shopping basket icon */}
+              
                     <ShoppingBasketIcon  />
-                    {/* number of items in the basket */}
+                   
                     <span className='header__optionLineTwo  header__basketCount' > {basket?.length} </span>
                 </div>
             </Link>
+
+            <div className='header__toggle' onClick={() => setToggle(!toggle)} >
+                {toggle ? <MenuIcon className='header__icon' /> : <ClearIcon  /> } 
+            </div>    
+            
 
         </div>
     )

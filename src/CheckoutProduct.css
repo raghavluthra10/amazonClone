@@ -29,3 +29,18 @@
     font-size: 17px;
     font-weight: 800;
 }
+
+@media only screen and (max-width: 550px) {
+    .checkoutProduct {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .checkoutProduct__image{
+        align-self: center;
+    }
+
+    .checkoutProduct__remove{
+        align-self: center;
+    }
+}

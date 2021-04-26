@@ -6,6 +6,7 @@
 
 .home__image {
     width: 100%;
+    min-height: 300px;
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
     z-index: -1;
     margin-bottom: -150px;
@@ -19,5 +20,15 @@
     justify-content: space-evenly;
 
 }
+
+@media only screen and (max-width: 860px) {
+    .home__row {
+        flex-direction: column;
+        align-self: center;
+        /* width: 90%; */
+    }
+}
+
+
 
 

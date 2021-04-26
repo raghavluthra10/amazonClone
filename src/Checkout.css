@@ -15,8 +15,23 @@
     border-bottom: 1px solid lightgray;
 }
 
-.checkout__right {
+@media only screen and (max-width: 730px) {
+    .checkout {
+        min-height: 100vh;
+        justify-content: flex-end;
+        flex-direction: column-reverse;
+    }
 
+    .checkout__ad {
+        display: none;
+    }
+
+    .checkout__right {
+        align-self: center;
+    }
+
+} 
+
+@media only screen and (max-width: 550px) {
+   
 }
-
- 
