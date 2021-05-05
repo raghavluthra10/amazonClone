@@ -3,10 +3,17 @@ import './Checkout.css';
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 import Subtotal from './Subtotal';
+import { useHistory } from 'react-router';
 
 const Checkout = () => {
 
     const [{ basket }] = useStateValue();
+
+    const history = useHistory();
+
+    const proceedToCheckout = () => {
+        history.push('/billinfInfo')
+    }
 
     return (
         <div className='checkout'>            
@@ -37,7 +44,7 @@ const Checkout = () => {
 
             {basket.length > 0 && (
                 <div className='checkout__right' >
-                    <Subtotal  />
+                    <Subtotal  proceedToCheckout={proceedToCheckout} btnLabel='Proceed to checkout' />
                 </div>
                 )}
             

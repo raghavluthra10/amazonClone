@@ -9,6 +9,24 @@ export const initialState = {
         // }
     ],
     user: null,
+    address: {        
+        //     fullName: null,
+        //     addressLine1: null,
+        //     addressLine2: null,
+        //     city: null,
+        //     state: null,
+        //     country: null,
+        //     phone: null
+    },
+    cardDetails: {
+        // cardId: null,
+        // nameOnCard: null,
+        // cardNumber: null,
+        // cvv: null,
+        // cardMonth: null,
+        // cardYear: null,
+    }
+    
 }
 
 export const getBasketTotal = (basket) => 
@@ -16,7 +34,8 @@ export const getBasketTotal = (basket) =>
 
 
 const reducer = (state, action) => {
-    console.log(action)
+    // console.log(action);
+    // console.log(state);
     switch(action.type) {
         case 'SET_USER':
             return {
@@ -39,7 +58,19 @@ const reducer = (state, action) => {
                 newBasket.splice(index, 1)
             }
             return { ...state, 
-                basket: newBasket }
+                basket: newBasket };
+        case 'ADD_SHIPPING_ADDRESS':
+            //logic for adding address
+            return {
+                ...state,
+                address: action.shippingAddress
+            };
+        case 'ADD_NEW_CARD':
+            //logic for adding a new card
+            return {
+                ...state,
+                cardDetails: action.card  
+            };
         default:
             return state
     }

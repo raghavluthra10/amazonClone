@@ -1,0 +1,198 @@
+.selectPayment {
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectPayment__container {
+    flex: 0.6;
+}
+
+.selectPayment__heading {
+    margin-left: 5vw;
+    margin-top: 50px;
+}
+
+.selectPayment__continueDiv {
+    padding:50px 50px;
+    height: fit-content;
+    border: lightgray 1px solid;
+    border-radius: 10px;
+    flex: 0.35;
+    margin-top: 50px;
+    display: flex;
+    margin-right: 8vw;
+    flex-direction: column;
+    background-color: #F7F7F7;
+}
+
+.selectPayment__cardsOption {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vw;
+    width: 50vw;
+}
+
+.selectPayment__cardsOptionHeading{
+    display: flex;
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.selectPayment__cardsOptionHeading > span {
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.selectPayment__cardsOptionList{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+
+}
+
+.selectPayment__selectCard {
+    display: flex;
+    align-items: center;
+}
+
+.selectPayment__cardsOptionList > span {
+    font-size: 16px;
+}
+
+.selectPayment__addCard {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+    margin-left: 5vw;
+}
+
+.selectPayment__addCardContainer {
+    display: flex;
+}
+
+.selectPayment__addCard > div {
+    margin-right: 10px;
+}
+
+.selectPayment__addCard > div > label {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.selectPayment__addCardContainer >  div > input {
+    height: 30px;
+    width: 10vw;
+}
+
+.selectPayment__addCardExp__input > input {
+    height: 30px;
+    width: 5vw;
+}
+
+.selectPayment__addCardExp__input {
+    display: flex;
+}
+
+.selectPayment__addCardBtn {
+    background: #f0c14b;
+    border-radius: 2px;
+    width: 100%;
+    height: 36px;
+    border: 1px solid;
+    align-self: flex-end;
+    border-color:#a88734  #9c7e31  #846a29;
+}
+
+.selectPayment__continueDiv > span {
+    align-self: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.selectPayment__continueBtn {
+    background: #f0c14b;
+    border-radius: 2px;
+    width: 100%;
+    align-self: center;
+    height: 36px;
+    border: 1px solid;
+    border-color:#a88734  #9c7e31  #846a29;
+}
+
+@media only screen and (max-width: 1090px) {
+   .selectPayment {
+       flex-direction: column;
+   }
+
+   .selectPayment__continueDiv {
+        margin-right: 0;
+        width: 60vw;
+        align-self: center;
+   }
+
+   .selectPayment__cardsOption {
+       width: 85%;
+   }
+
+   .selectPayment__addCard {
+       flex-direction: column;
+       width: 90%;
+   }
+
+   .selectPayment__addCardContainer {
+        justify-content: space-between;
+        width: 95%;
+    }
+
+    .selectPayment__addCardContainer > div > label {
+        margin-bottom: 10px;
+    }
+
+   .selectPayment__container {
+       align-self: center;
+       width: 90vw;
+   }
+
+   .selectPayment__addCardText, .selectPayment__addCardNumber {
+       display: flex;
+       flex-direction:column;
+   }
+
+   .selectPayment__cardsOptionHeading > span {
+    font-weight: 600;
+    font-size: 14px;
+    }
+
+    .selectPayment__addCardExp__input{
+        margin-top: 10px;
+    }
+
+    .selectPayment__addCardBtn {
+        align-self: center;
+        margin-top: 20px;
+    }
+
+    .selectPayment__addCardContainer >  div > input {
+        width: 80px;
+    }
+    
+    .selectPayment__addCardExp__input > input {
+        width: 40px;
+    }
+
+}
+
+ @media only screen and (max-width: 660px) {
+    .selectPayment__heading {
+        font-size: 18px !important;
+    }
+
+}  

@@ -1,0 +1,150 @@
+.placeOrder {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.placeOrder__Container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.placeOrder__cvvBtn {
+    background: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: 10px;
+    border-color:  #a88734  #9c7e31  #846a29;
+    color: #111;
+}
+
+.placeOrder__left {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.placeOrder__leftDetail {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.placeOrder__shippingAdd {
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.placeOrder__leftAdrress {
+    display: flex;
+    flex-direction: column;
+}
+
+.placeOrder__leftAdrress > span {
+    font-weight: 600;
+}
+
+.placeOrder__remove {
+    background: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: 10px;
+    border-color:  #a88734  #9c7e31  #846a29;
+    color: #111;
+}
+
+.placeOrder__productList {
+    display: flex;
+    margin-top: 60px;
+}
+
+.placeOrder__productList > img {
+    object-fit: contain;
+    width: 180px;
+    height: 180px;
+}
+
+.placeOrder__info {
+    padding-left: 20px;
+}
+
+.placeOrder__rating {
+    display: flex;
+}
+
+.placeOrder__title {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+@media only screen and (max-width: 1130px) {
+    .placeOrder__left {
+        width: 300px;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+
+    .placeOrder__productList {
+        padding-right: 2vw;
+        padding-left: 2vw;
+    }
+
+    .placeOrder__leftDetail{
+        flex-direction: column;
+    }
+
+    .placeOrder__leftCardDetails {
+        margin-top: 30px;
+    }
+
+    .placeOrder__Container {
+        margin-bottom: 100px;
+    };
+
+}
+
+@media only screen and (max-width: 730px) {
+    .placeOrder {
+        padding-left: 0vw;
+        padding-right: 0vw;
+    }
+    .placeOrder__Container {
+        flex-direction: column-reverse;
+        height: 400px;
+    }
+
+    .placeOrder__right {
+        margin-left: 3vw;
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .placeOrder__leftDetail {
+        width: fit-content;
+    }
+
+    .placeOrder__productList {
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .placeOrder__productImage{
+        align-self: center;
+    }
+
+    .placeOrder__remove{
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 434px) {
+    .placeOrder__right {
+        margin-left: 2vw;
+    }
+}

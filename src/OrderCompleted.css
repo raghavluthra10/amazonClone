@@ -1,0 +1,24 @@
+.orderCompleted {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8vw;
+    padding-top: 100px;
+}
+
+.orderCompleted > h1 {
+    margin-bottom: 20px;
+}
+
+.orderCompleted > h3 {
+    margin-bottom: 20px;
+}
+
+.orderCompleted__btn {
+    background: #f0c14b;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: 10px;
+    border-color:  #a88734  #9c7e31  #846a29;
+    color: #111;
+    width: 200px;
+}

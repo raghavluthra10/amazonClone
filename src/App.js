@@ -7,6 +7,10 @@ import Login from './Login';
 import { useStateValue } from './StateProvider';
 import { useEffect } from 'react';
 import { auth } from './firebase';
+import BillingInfo from './BillingInfo';
+import SelectPayment from './SelectPayment';
+import PlaceOrder from './PlaceOrder.js';
+import OrderCompleted from './OrderCompleted';
 
 
 function App() {
@@ -47,6 +51,22 @@ function App() {
             <Header  /> 
              <Checkout  />   
           </Route>
+          <Route path='/selectPaymentOption' > 
+            <Header  /> 
+             <SelectPayment  />   
+          </Route>
+          <Route path='/orderCompleted' > 
+            <Header  /> 
+             <OrderCompleted  />   
+          </Route>
+          <Route path='/billinfInfo'>
+            <Header  />
+            <BillingInfo  />
+          </Route>
+          <Route path='/placeOrder'>
+            <Header  />
+            <PlaceOrder />
+          </Route>
           <Route path='/login' >
               <Login  />  
           </Route>
@@ -62,3 +82,7 @@ function App() {
   }
 
 export default App;
+
+
+// https://images-eu.ssl-images-amazon.com/images/G/31/checkout/payselect/progressbar-payments._CB485947677_.gif
+// https://images-eu.ssl-images-amazon.com/images/G/31/x-locale/checkout/confirm-banner._CB485949149_.gif
