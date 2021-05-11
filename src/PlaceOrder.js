@@ -24,14 +24,7 @@ const PlaceOrder = () => {
         const enterCvv = e => {
             e.preventDefault();
 
-            dispatch({
-                type: 'ADD_NEW_CARD',
-                card: {
-                    ...state,
-                    cvv: cvvVal
-                }
-            })
-            console.log(state)
+      
         }
 
         
@@ -67,12 +60,12 @@ const PlaceOrder = () => {
                         <div className='placeOrder__leftCardDetails'>
                             {/* put a filter condition before cardDetails to map over only those cards whose selected = true */}
                             <span> Your card number: </span>
-                            <span> {state.cardDetails.cardNumber}  </span>
+                            <span> {state.card.cardNumber}  </span>
 
-                            <form>
+                            {/* <form>
                                 <input value={cvvVal} onChange={e => setCvvVal(e.target.value)}  type='password' placeholder='CVV' />
                                 <input  type='submit' className='placeOrder__cvvBtn' onClick={enterCvv} value='Enter Cvv' />
-                            </form>
+                            </form> */}
                         </div>
                     </div>
                 </div>

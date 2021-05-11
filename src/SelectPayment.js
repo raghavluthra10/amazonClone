@@ -1,8 +1,13 @@
 import React, { useState }  from 'react';
 import './SelectPayment.css';
-import Select from '@material-ui/core/Select';
 import { useHistory } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const SelectPayment = () => {
 
@@ -12,13 +17,13 @@ const SelectPayment = () => {
     const [ cardNumber, setCardNumber ] = useState('');
     const [ cardMonth, setCardMonth ] = useState('');
     const [ cardYear, setCardYear ] = useState('');
-    const [ cardSelected, setCardSelected ] = useState(null);
+    const [ cvv, setCvv ] = useState('');
     const [ cardTorF, setCardTorF ] = useState(false);
     const [ newObj, setNewObj ] = useState(null);
 
     const history = useHistory();
 
-    const [ { cardDetails, cardSelectedForPayment  }, dispatch ] = useStateValue();
+    const [ { cardDetails, card  }, dispatch ] = useStateValue();
 
     const addCard = (e) => {
         e.preventDefault(); 
@@ -35,20 +40,71 @@ const SelectPayment = () => {
                     cvv: null,
                     cardMonth: cardMonth,
                     cardYear: cardYear,
+                    chose: false,
                 }
             });
         }
     }
 
+    const selectCard = (e) => {
+     
+        // for (let i=0; i<cardDetails.length; i++) {
+        //     if(e === cardDetails[i].cardId) {
+        //         dispatch({
+        //             type: 'ADD_NEW_CARD', 
+        //             card: {
+        //                 ...cardDetails,
+        //                 chose: true,
+        //             }
+        //         });
+        //     } else {
+        //         dispatch({
+        //             type: 'ADD_NEW_CARD', 
+        //             card: {
+        //                 ...cardDetails,
+        //                 chose: false,
+        //             }
+        //         });
+        //     }
+        // }
+
+        
+
+        for (let i=0; i<cardDetails.length; i++) {
+            if(e === cardDetails[i].cardId) {
+                console.log(cardDetails[i].cardId)
+                dispatch({
+                    type: 'SELECT_CARD', 
+                    yes: {
+                        cardId: cardDetails[i].cardId,
+                        nameOnCard: cardDetails[i].nameOnCard,
+                        cardNumber: cardDetails[i].cardNumber,
+                        cvv: cardDetails[i].null,
+                        cardMonth: cardDetails[i].cardMonth,
+                        cardYear: cardDetails[i].cardYear,
+                        chose: true,
+                    }
+                });
+            } 
+        }
+
+    }
+
+    const deleteCard = (id) => {
+        dispatch({
+            type: 'REMOVE_CARD',
+            id: id,
+        })
+    }
+
     const proceedForPayment = (e) => {
         e.preventDefault();
-        if(cardDetails.nameOnCard==='' || cardDetails.cardNumber==='' || cardDetails.cardYear==='' || cardDetails.cardMonth==='') {
-            alert('Please fill in your card details before moving forward')
+        if(card.nameOnCard==='' || card.cardNumber==='' || card.cardYear==='' || card.cardMonth==='' || card.cvv ==='') {
+            alert('Please Select a card')
         } else {
             history.push('/placeOrder');
         }
     };
-
 
     return (
         <div className='selectPayment'>
@@ -58,36 +114,64 @@ const SelectPayment = () => {
                 <div className='selectPayment__cardsOption'>
                     <div className='selectPayment__cardsOptionHeading' >
                         <span>
-                            Your card number
+                            <CheckCircleIcon />
                         </span>
 
-                        <span>
-                            Name on card
-                        </span>
+                        <div>
+                            <span>
+                                Card number
+                            </span>
+
+                            <span>
+                                Name on card
+                            </span>
+
+                            <span>
+                                Expires on
+                            </span>
+                        </div>
+                        
 
                         <span>
-                            Expires on
+                            <DeleteIcon />
                         </span>
                     </div>
                 
                   
-                   
-                        <div  key={cardDetails.cardId} className='selectPayment__cardsOptionList'>
-                            <span>
-                                {cardDetails.cardNumber}
-                            </span>
+                    {cardDetails.map((card) => (
+                        <div  key={card.cardId} className='selectPayment__cardsOptionList'>
+                            <FormControlLabel
+                                onClick={() => selectCard(card.cardId)}
+                                control={<Checkbox icon={<RadioButtonUncheckedIcon />}  checkedIcon={ <CheckCircleIcon />}  name="checked" />}
+                                id={card.cardId}
+                                />
 
-                            <span>
-                                {cardDetails.nameOnCard} 
-                            </span>
+                            <div>
+                                <span>
+                                    {card.cardNumber}
+                                </span>
 
-                            <span>
-                                {cardDetails.cardMonth}  {cardDetails.cardYear}
-                            </span>
+                                <span>
+                                    {card.nameOnCard} 
+                                </span>
+
+                                <span>
+                                    {card.cardMonth}  {card.cardYear}
+                                </span>
+                            </div>
+                            
+                            <DeleteIcon 
+                            className='selectPayment__deleteIcon'
+                            onClick={() => deleteCard(card.cardId)}
+                            />
                         </div>
+                    ))}
+                        
                  
                 
                 </div>
+
+                
 
 
                 <form className='selectPayment__addCard'>
@@ -100,6 +184,11 @@ const SelectPayment = () => {
                         <div className='selectPayment__addCardNumber'>
                             <label> Card number    </label>
                             <input type='number' placeholder='9862-****-****-7362' value={cardNumber} onChange={e => setCardNumber(e.target.value)} />
+                        </div>
+
+                        <div className='selectPayment__cvv'>
+                            <label> Cvv   </label>
+                            <input type='password' placeholder='ex: 123' value={cvv} onChange={e => setCvv(e.target.value)} />
                         </div>
                         
                         <div className='selectPayment__addCardExp'>
@@ -131,3 +220,4 @@ const SelectPayment = () => {
 }
 
 export default SelectPayment
+//card.chose && `checkedIcon=${<CheckCircleIcon />} `

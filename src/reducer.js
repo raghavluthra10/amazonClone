@@ -18,15 +18,24 @@ export const initialState = {
         //     country: null,
         //     phone: null
     },
-    cardDetails: {
+    cardDetails: [
         // cardId: null,
         // nameOnCard: null,
         // cardNumber: null,
         // cvv: null,
         // cardMonth: null,
         // cardYear: null,
+        // chose: null,
+    ],
+    card: {
+        // cardId: null,
+        // nameOnCard: null,
+        // cardNumber: null,
+        // cvv: null,
+        // cardMonth: null,
+        // cardYear: null,
+        // chose: null,
     }
-    
 }
 
 export const getBasketTotal = (basket) => 
@@ -35,7 +44,8 @@ export const getBasketTotal = (basket) =>
 
 const reducer = (state, action) => {
     // console.log(action);
-    // console.log(state);
+    console.log(state.cardDetails);
+    console.log(state.card)
     switch(action.type) {
         case 'SET_USER':
             return {
@@ -69,8 +79,22 @@ const reducer = (state, action) => {
             //logic for adding a new card
             return {
                 ...state,
-                cardDetails: action.card  
+                cardDetails: [...state.cardDetails, action.card]  
             };
+        case 'SELECT_CARD':
+            return {
+                ...state,
+                card: action.yes
+            }
+        case 'REMOVE_CARD': 
+            let newCards = [...state.cardDetails]
+
+            const i = newCards.filter((card) => card.cardId !== action.id)
+            
+            return{
+                ...state,
+                cardDetails: i
+            }
         default:
             return state
     }
