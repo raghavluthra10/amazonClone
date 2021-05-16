@@ -15,7 +15,7 @@ const Home = () => {
                 <Product 
                 id='12345'
                 title='TCL 50-inch Class 4-Series 4K UHD Smart Roku LED TV - 50S435, 2021 Model'
-                price={99}
+                price={99.99}
                 rating={4}
                 image='https://m.media-amazon.com/images/I/714hn7q7WxL._AC_UL480_FMwebp_QL65_.jpg'
                 />

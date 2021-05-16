@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import './BillingInfo.css';
-import Subtotal from './Subtotal';
 import { useStateValue } from './StateProvider';
 
 const CheckoutFinal = () => {
@@ -38,7 +37,7 @@ const CheckoutFinal = () => {
                 }
             })
 
-            history.push('/selectPaymentOption')
+            history.push('/placeOrder')
         } 
     };
 

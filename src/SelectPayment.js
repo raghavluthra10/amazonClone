@@ -47,29 +47,6 @@ const SelectPayment = () => {
     }
 
     const selectCard = (e) => {
-     
-        // for (let i=0; i<cardDetails.length; i++) {
-        //     if(e === cardDetails[i].cardId) {
-        //         dispatch({
-        //             type: 'ADD_NEW_CARD', 
-        //             card: {
-        //                 ...cardDetails,
-        //                 chose: true,
-        //             }
-        //         });
-        //     } else {
-        //         dispatch({
-        //             type: 'ADD_NEW_CARD', 
-        //             card: {
-        //                 ...cardDetails,
-        //                 chose: false,
-        //             }
-        //         });
-        //     }
-        // }
-
-        
-
         for (let i=0; i<cardDetails.length; i++) {
             if(e === cardDetails[i].cardId) {
                 console.log(cardDetails[i].cardId)

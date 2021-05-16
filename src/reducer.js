@@ -8,6 +8,7 @@ export const initialState = {
         //         image:'https://images-eu.ssl-images-amazon.com/images/G/31/img21/Toys/Smartivity/smartivity_1x._SY304_CB655110700_.jpg'
         // }
     ],
+    order:[],
     user: null,
     address: {        
         //     fullName: null,
@@ -44,8 +45,7 @@ export const getBasketTotal = (basket) =>
 
 const reducer = (state, action) => {
     // console.log(action);
-    console.log(state.cardDetails);
-    console.log(state.card)
+    console.log(state);
     switch(action.type) {
         case 'SET_USER':
             return {
@@ -75,25 +75,19 @@ const reducer = (state, action) => {
                 ...state,
                 address: action.shippingAddress
             };
-        case 'ADD_NEW_CARD':
-            //logic for adding a new card
+        case 'ADD_ORDER':
             return {
                 ...state,
-                cardDetails: [...state.cardDetails, action.card]  
-            };
-        case 'SELECT_CARD':
-            return {
-                ...state,
-                card: action.yes
-            }
-        case 'REMOVE_CARD': 
-            let newCards = [...state.cardDetails]
+                order:[action.addOrder]
+            }   
+        case 'EMPTY_BASKET':
+            // let emp = [...state.basket]
 
-            const i = newCards.filter((card) => card.cardId !== action.id)
-            
+            // const fullEmpty = emp.filter((none) => none.price === -1)
+
             return{
                 ...state,
-                cardDetails: i
+                basket: action.emptyIt
             }
         default:
             return state

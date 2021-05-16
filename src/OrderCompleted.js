@@ -20,7 +20,7 @@ const OrderCompleted = () => {
             <h1> Thank you for shopping at Amazon </h1>
 
             <h3>
-                Your order will be dispatched soon and you'll get the updates for the same in your e-mail.
+                Your order will be dispatched soon.
             </h3>
 
             <button className='orderCompleted__btn' onClick={backToHomePage}>

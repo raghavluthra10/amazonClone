@@ -1,14 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import PaypalBtn from './PaypalBtn';
 import './PlaceOrder.css';
 import { useStateValue } from './StateProvider';
 import Subtotal from './Subtotal';
+import { getBasketTotal } from './reducer';
 
 const PlaceOrder = () => {
 
     const [ state, dispatch ] = useStateValue();
-    const [ cvvVal, setCvvVal ] = useState(null);
+    const totalAmount = getBasketTotal(state.basket);
 
     const history = useHistory();
   
@@ -20,13 +22,7 @@ const PlaceOrder = () => {
         // cvv: null,
         // cardMonth: null,
         // cardYear: null,
-
-        const enterCvv = e => {
-            e.preventDefault();
-
-      
-        }
-
+        
         
     const removeItem = (id) => {
         dispatch({
@@ -42,63 +38,58 @@ const PlaceOrder = () => {
 
     return (
         <div className='placeOrder'>
-            <div className='placeOrder__Container' >
+            
                 <div className='placeOrder__left'>
-                    <h1> Review your order </h1>
                     
-                    <div className='placeOrder__leftDetail'>
-                        <div className='placeOrder__leftAdrress'>
-                            <span className='placeOrder__shippingAdd' > Your Shipping Address: </span>
-                            <span> {state.address.addressLine1} </span>
-                            <span> {state.address.addressLine2} </span>
-                            <span> {state.address.city} </span>
-                            <span> {state.address.state} </span>
-                            <span> {state.address.country} </span>
-                            <span> {state.address.phone} </span>
-                        </div>
-
-                        <div className='placeOrder__leftCardDetails'>
-                            {/* put a filter condition before cardDetails to map over only those cards whose selected = true */}
-                            <span> Your card number: </span>
-                            <span> {state.card.cardNumber}  </span>
-
-                            {/* <form>
-                                <input value={cvvVal} onChange={e => setCvvVal(e.target.value)}  type='password' placeholder='CVV' />
-                                <input  type='submit' className='placeOrder__cvvBtn' onClick={enterCvv} value='Enter Cvv' />
-                            </form> */}
-                        </div>
+                    <div className='placeOrder__leftAdrress'>
+                        <span className='placeOrder__shippingAdd' > Your Shipping Address: </span>
+                        <span> {state.address.addressLine1} </span>
+                        <span> {state.address.addressLine2} </span>
+                        <span> {state.address.city} </span>
+                        <span> {state.address.state} </span>
+                        <span> {state.address.country} </span>
+                        <span> {state.address.phone} </span>
                     </div>
+
+                    <div className='placeOrder__leftCardDetails'>
+                        <span className='placeOrder__payWith'> $ {totalAmount} Pay with: </span>
+                        <span> <PaypalBtn className='placeOrder__PaypalBtn' />  </span>
+                    </div>
+                    
                 </div>
 
+                <div className='placeOrder__productListContainer'>
 
-                <div className='placeOrder__right'>
-                    <Subtotal  proceedToCheckout={proceedToCheckout} btnLabel='Place your order' />
-                </div>
-            </div>
-            
-            {state.basket.map((info) => (
-                <div className='placeOrder__productList'>
-                    <img src={info.image} alt='' className='placeOrder__productImage'  />
+                    <h1> Review your order </h1> 
 
-                    <div className='placeOrder__info'>
-                        <p className='placeOrder__title' > {info.title} </p>
+                {state.basket.map((info) => (
+                               
 
-                        <p className='placeOrder__price' > 
-                            <small> $ </small>
-                            <strong> {info.price} </strong>
-                        </p>
-
-                        <div className='placeOrder__rating'>
-                            {Array(info.rating).fill().map((_, i) => (
-                                <p> ⭐ </p>
-                            ))}
-                        </div>
+                    <div className='placeOrder__productList'>
                         
-                        <button className='placeOrder__remove' onClick={() => removeItem(info.id)} > Remove from basket </button>
+                        <img src={info.image} alt='' className='placeOrder__productImage'  />
+
+                        <div className='placeOrder__info'>
+                            <p className='placeOrder__title' > {info.title} </p>
+
+                            <p className='placeOrder__price' > 
+                                <small> $ </small>
+                                <strong> {info.price} </strong>
+                            </p>
+
+                            <div className='placeOrder__rating'>
+                                {Array(info.rating).fill().map((_, i) => (
+                                    <p> ⭐ </p>
+                                ))}
+                            </div>
+                            
+                            <button className='placeOrder__remove' onClick={() => removeItem(info.id)} > Remove from basket </button>
+                        </div>
                     </div>
+                
+               
+                ))}
                 </div>
-            ))}
-            
 
         </div>
     )
